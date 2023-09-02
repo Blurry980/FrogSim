@@ -4,7 +4,7 @@ public class Frog {
     protected String name;
     protected int age;
     protected double tongueSpeed;
-    protected boolean isFroglet;
+    public boolean isFroglet;
     protected static String species = "Rare Pepe";
 
     public Frog(String name, int age, double tongueSpeed){
@@ -26,7 +26,7 @@ public class Frog {
             for(int i = 0; i != numMonths; i++){
                 if(age <=12){
                     tongueSpeed+=1;
-                    System.out.println("Increased tongue");
+                    //System.out.println("Increased tongue");
                 }
 
                    if(tongueSpeed >= 5 && age >= 30){
@@ -46,4 +46,40 @@ public class Frog {
 
     }
 
+    public void grow(){
+        this.grow(1);
+    }
+
+    public void eat(Fly fly){
+        if(fly.getMass() == 0){
+            return;
+        }
+        if(fly.getSpeed()<tongueSpeed){
+            fly.setMass(0);
+            if (fly.getMass() >= age*.5){
+                this.grow();
+
+            }
+        } else {
+            fly.grow(1);
+        }
+    }
+
+    @Override
+    public String toString() {
+        if(isFroglet){
+            return String.format("My name is %s and I'm a rare froglet! I'm age %d months old and my tongue has a speed of %f.", name, age, tongueSpeed);
+
+        } else{
+            return String.format("My name is %s and I'm a rare frog. I'm age %d months old and my tongue has a speed of %f.", name, age, tongueSpeed);
+        }
+    }
+
+    public static String getSpecies() {
+        return species;
+    }
+
+    public static void setSpecies(String species) {
+        Frog.species = species;
+    }
 }

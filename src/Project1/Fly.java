@@ -52,12 +52,12 @@ public class Fly {
                 speed += 1;
                 //System.out.println("in loop");
             }
-            System.out.printf("Dang I;m fast. I have a speed of %f and a weight of %d", speed, mass);
+          //  System.out.printf("Dang I;m fast. I have a speed of %f and a weight of %d", speed, mass);
         } else if (mass >= 20) {
             for (double diff = 20 - mass; mass == 20; diff++) {
                 speed -= 0.5;
             }
-            System.out.printf("Dang I;m slowing down. I have a speed of %f and a weight of %d", speed, mass);
+           // System.out.printf("Dang I;m slowing down. I have a speed of %f and a weight of %d", speed, mass);
         }
     }
 }
