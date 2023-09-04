@@ -1,16 +1,22 @@
 package Project1;
 
 public class Frog {
-    protected String name;
-    protected int age;
-    protected double tongueSpeed;
+    private String name;
+    private int age;
+    private double tongueSpeed;
     public boolean isFroglet;
-    protected static String species = "Rare Pepe";
+    private static String species = "Rare Pepe";
 
     public Frog(String name, int age, double tongueSpeed){
         this.name = name;
-        this.age = age;
+        this.age = (int)age;
         this.tongueSpeed = tongueSpeed;
+
+        if(age >= 1 && age <= 7){
+            isFroglet=true;
+        } else {
+            isFroglet=false;
+        }
     }
 
     public Frog(String name, double age){
@@ -23,8 +29,8 @@ public class Frog {
     }
 
     public void grow(int numMonths){
-            for(int i = 0; i != numMonths; i++){
-                if(age <=12){
+            for(int i = 1; i != numMonths; i++){
+                if(age <= 12){
                     tongueSpeed+=1;
                     //System.out.println("Increased tongue");
                 }
@@ -35,8 +41,6 @@ public class Frog {
                 }
 
             age += numMonths;
-        System.out.println(age);
-        System.out.println(tongueSpeed);
             if(age >= 1 && age <= 7){
                 isFroglet=true;
             } else {
@@ -53,14 +57,18 @@ public class Frog {
     public void eat(Fly fly){
         if(fly.getMass() == 0){
             return;
+           // System.out.println("banana");
         }
         if(fly.getSpeed()<tongueSpeed){
-            fly.setMass(0);
             if (fly.getMass() >= age*.5){
+
                 this.grow();
 
             }
+            fly.setMass(0);
+
         } else {
+            //System.out.println("banana");////////////////////////////////////////
             fly.grow(1);
         }
     }
@@ -68,10 +76,10 @@ public class Frog {
     @Override
     public String toString() {
         if(isFroglet){
-            return String.format("My name is %s and I'm a rare froglet! I'm age %d months old and my tongue has a speed of %f.", name, age, tongueSpeed);
+            return String.format("My name is %s and I'm a rare froglet! I'm %d months old and my tongue has a speed of %.2f.", name, age, tongueSpeed);
 
         } else{
-            return String.format("My name is %s and I'm a rare frog. I'm age %d months old and my tongue has a speed of %f.", name, age, tongueSpeed);
+            return String.format("My name is %s and I'm a rare frog. I'm %d months old and my tongue has a speed of %.2f.", name, age, tongueSpeed);
         }
     }
 
